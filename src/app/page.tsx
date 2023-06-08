@@ -1,95 +1,82 @@
-import Image from 'next/image'
-import styles from './page.module.css'
 
-export default function Home() {
+import ActionSlider from "@/components/ui-kits/slider/action-slider";
+import BannerSlider from "@/components/ui-kits/slider/banner-slider";
+import DraggableSlider from "@/components/ui-kits/slider/draggable-slide";
+import styles from "@/services/scss/styles/home.module.scss";
+import { IC_whatsapp } from "@/utils/images";
+import Image from "next/image";
+
+const Home = async () => {
+  // const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts/1');
+  // console.log(data);
+
+  // if(!data) throw new AuthRequiredError()
+  const data = [
+    {
+      img: 'https://www.arogga.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhealthcare.f2892a7b.png&w=1920&q=75',
+      name: 'Register Pharmacy',
+      off: '14%',
+      type: 'OFF+Cashback',
+      color: 'warning'
+    },
+    {
+      img: 'https://www.arogga.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhealthcare.f2892a7b.png&w=1920&q=75',
+      name: 'Register Pharmacy',
+      off: '14%',
+      type: 'OFF+Cashback',
+      color: 'warning'
+    },
+    {
+      img: 'https://www.arogga.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhealthcare.f2892a7b.png&w=1920&q=75',
+      name: 'Register Pharmacy',
+      off: '14%',
+      type: 'OFF+Cashback',
+      color: 'warning'
+    },
+    {
+      img: 'https://www.arogga.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhealthcare.f2892a7b.png&w=1920&q=75',
+      name: 'Register Pharmacy',
+      off: '14%',
+      type: 'OFF+Cashback',
+      color: 'warning'
+    },
+    {
+      img: 'https://www.arogga.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhealthcare.f2892a7b.png&w=1920&q=75',
+      name: 'Register Pharmacy',
+      off: '14%',
+      type: 'OFF+Cashback',
+      color: 'warning'
+    }
+  ];
+  const test = () => {
+    console.log('test');
+  }
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div>
+      <BannerSlider />
+      {/* <ActionSlider /> */}
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <DraggableSlider>
+        {data?.map((d, i) =>
+          <div className={styles.card} key={i}>
+            <div className={styles.icon_wrap}>
+              <Image alt="" src={IC_whatsapp} />
+            </div>
+            <div className={styles.content}>
+              <div>
+                <h5>Order</h5>
+                <p>Via WhatsApp</p>
+                <p>01810117100</p>
+              </div>
+              <button>
+                Click Here
+              </button>
+            </div>
+          </div>
+        )}
+      </DraggableSlider>
+    </div>
+  );
+};
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+export default Home;

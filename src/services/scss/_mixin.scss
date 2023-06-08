@@ -1,0 +1,44 @@
+//flex box
+@mixin flex {
+    display: flex;
+}
+
+@mixin flexCenter {
+    @include flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin itemsCenter {
+    @include flex;
+    align-items: center;
+}
+@mixin flexColumn {
+    @include flex;
+    flex-direction: column;
+}
+@mixin flexColCenter {
+    @include flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flexColBetween {
+    @include flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+// utils
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+}
+
+@mixin ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

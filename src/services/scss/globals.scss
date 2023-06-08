@@ -1,0 +1,17 @@
+// @import "./grids/main.scss";
+@import "./mixin";
+@import "./variables";
+
+body {
+    margin: 0;
+    padding: 0 8px;
+    scroll-behavior: smooth;
+}
+
+.text-xs {
+    font-size: 11px;
+}
+
+.swiper-pagination-bullet {
+    background-color: $primary !important;
+}

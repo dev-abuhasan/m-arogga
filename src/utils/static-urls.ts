@@ -1,0 +1,1 @@
+export const M_AROGGA = 'https://m.arogga.com'

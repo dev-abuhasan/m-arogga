@@ -1,0 +1,191 @@
+@import "@/services/scss/variables.scss";
+@import "@/services/scss/mixin.scss";
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    z-index: 999;
+    transition: top 0.3s ease-in-out;
+    background-color: $light;
+
+    .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $light;
+        padding: 8px;
+
+        .logo_wrap {
+            display: flex;
+            flex-direction: column;
+            line-height: 15px;
+
+            a {
+                text-decoration: none;
+                font-size: 12px;
+                color: $dark;
+                small {
+                    @include itemsCenter;
+                    b {
+                        @include itemsCenter;
+
+                        span {
+                            max-width: 75px;
+                            @include ellipsis;
+                        }
+                    }
+                    svg {
+                        width: 18px;
+                        height: 15px;
+                    }
+                }
+            }
+        }
+        .menu_icon {
+            display: flex;
+            align-items: center;
+            .cash {
+                background-color: $l_warning;
+                border-radius: 4px;
+                padding: 4px 4px 4px 2px;
+                b {
+                    background-color: $warning;
+                    display: inline-flex;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    color: $light;
+                }
+            }
+            .icon {
+                background-color: #ddd;
+                border-radius: 100%;
+                width: 25px;
+                height: 25px;
+                position: relative;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 5px;
+
+                svg {
+                    width: 18px;
+                    height: 18px;
+                }
+                .count_item {
+                    font-size: 10px;
+                    background-color: $danger;
+                    border-radius: 100%;
+                    padding: 1px;
+                    width: 15px;
+                    height: 15px;
+                    color: $light;
+                    @include absolute(-5px, -5px);
+                    @include flexCenter;
+                }
+            }
+        }
+    }
+
+    .bottom {
+        @include flexCenter;
+        background-color: $light;
+        padding: 0 10px;
+
+        .search {
+            @include flexCenter;
+            padding: 0px 10px;
+            width: 100%;
+            background-color: $grey;
+            border-radius: 20px;
+            button {
+                background-color: transparent;
+                border: none;
+                margin: 0;
+                padding: 0;
+                padding-top: 5px;
+            }
+            label {
+                width: 100%;
+                overflow: hidden;
+                position: relative;
+                padding: 0 5px;
+                input {
+                    width: 100%;
+                    padding: 8px;
+                    margin-left: 5px;
+                    border: none;
+                    background-color: transparent;
+                    &:focus {
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+            span {
+                padding: 2px;
+                z-index: 10;
+                width: 15px;
+                height: 15px;
+                border-radius: 100%;
+                @include flexCenter;
+
+                svg {
+                    color: $dark;
+                }
+            }
+        }
+    }
+    .btm_brd {
+        border-bottom: 1px solid $grey;
+        padding-top: 8px;
+    }
+}
+.visible {
+    top: -50px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+
+    &.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+    }
+
+    .sideNav {
+        width: 220px;
+        height: 100%;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    &.open .sideNav {
+        transform: translateX(0);
+    }
+
+    .closeButton {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+}
