@@ -6,7 +6,13 @@
     width: 100%;
     overflow: hidden;
     position: relative;
+    // background-color: red;
 
+    .title {
+        @include flexBetween;
+        font-size: 14px;
+        padding-bottom: 10px;
+    }
     .draggable_container {
         display: flex;
         overflow-x: auto;
@@ -22,43 +28,25 @@
         &::-webkit-scrollbar-thumb {
             background-color: transparent;
         }
-
-        .card {
-            min-width: 140px;
-            height: 150px;
-            margin-right: 25px;
-            position: relative;
-            background: linear-gradient(151.46deg, #fffef9 3.3%, #5cd163 93.34%);
-            border-radius: 12px 70px 12px 12px;
-            padding: 40px 10px 10px 10px;
-
-            .icon_wrap {
-                @include absolute(0, 0);
-                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-            }
-
-            .content {
-                @include flexColBetween;
-                height: 100%;
-                h5,
-                p {
-                    margin: 0;
-                    margin-bottom: 5px;
-                    font-size: 14px;
-                }
-                h5 {
-                    font-size: 18px;
-                }
-                button {
-                    height: 32px;
-                    background: #ffffff;
-                    border-radius: 8px;
-                    border: none;
-                    font-size: 12px;
-                    color: #44b24a;
-                    display: block;
-                }
-            }
+    }
+    .space {
+        padding-bottom: 10px;
+    }
+    .arrowContainer {
+        position: absolute;
+        top: auto;
+        bottom: 0;
+        button {
+            background-color: transparent;
+            border: none;
+            @include flexCenter;
+            padding: 0;
         }
+    }
+    .arrow_left {
+        left: 0;
+    }
+    .arrow_right {
+        right: 0;
     }
 }

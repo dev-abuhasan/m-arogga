@@ -4,12 +4,18 @@ import Image from 'next/image';
 import { IC_whatsapp } from '@/utils/images';
 // import styles from "./menu-slide.module.scss";
 import styles from "./draggable-slide.module.scss";
+import { left_arrow_v1, right_arrow_v1 } from '@/utils/svg';
+import Link from 'next/link';
 
 interface Props {
     children?: React.ReactNode;
+    title?: string;
+    label?: string;
+    link?: string;
+    arrow?: any;
 }
 
-const DraggableSlider: React.FC<Props> = ({ children }) => {
+const DraggableSlider: React.FC<Props> = ({ children, title, label, link, arrow }) => {
     const containerRef = useRef(null);
     const [scrollLeft, setScrollLeft] = useState(0);
 
@@ -53,66 +59,31 @@ const DraggableSlider: React.FC<Props> = ({ children }) => {
         setScrollLeft(container.scrollLeft);
     };
 
-    const data = [
-        {
-            img: 'https://www.arogga.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhealthcare.f2892a7b.png&w=1920&q=75',
-            name: 'Register Pharmacy',
-            off: '14%',
-            type: 'OFF+Cashback',
-            color: 'warning'
-        },
-        {
-            img: 'https://www.arogga.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhealthcare.f2892a7b.png&w=1920&q=75',
-            name: 'Register Pharmacy',
-            off: '14%',
-            type: 'OFF+Cashback',
-            color: 'warning'
-        },
-        {
-            img: 'https://www.arogga.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhealthcare.f2892a7b.png&w=1920&q=75',
-            name: 'Register Pharmacy',
-            off: '14%',
-            type: 'OFF+Cashback',
-            color: 'warning'
-        },
-        {
-            img: 'https://www.arogga.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhealthcare.f2892a7b.png&w=1920&q=75',
-            name: 'Register Pharmacy',
-            off: '14%',
-            type: 'OFF+Cashback',
-            color: 'warning'
-        },
-        {
-            img: 'https://www.arogga.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhealthcare.f2892a7b.png&w=1920&q=75',
-            name: 'Register Pharmacy',
-            off: '14%',
-            type: 'OFF+Cashback',
-            color: 'warning'
-        }
-    ];
-
     return (
-        <div className={styles.draggable_section}>
-            DragAble
-            <div className={styles.arrowContainer}>
-                <button className={styles.arrowLeft} onClick={scrollLeftHandler}>
-                    LEFT
-                </button>
+        <div className={styles.draggable_section} >
+            <div className={styles.title}>
+                <b>{title ? title : 'Not Found'}</b>
+                <Link href="/">{label ? label : 'View ALL'}</Link>
             </div>
+            {arrow && <div className={`${styles.arrowContainer} ${styles.arrow_left}`}>
+                <button className={styles.arrowLeft} onClick={scrollLeftHandler}>
+                    {left_arrow_v1}
+                </button>
+            </div>}
             <div
-                className={styles.draggable_container}
+                className={`${styles.draggable_container} ${arrow ? styles.space : ''}`}
                 ref={containerRef}
                 onDragStart={handleDragStart}
                 onDrag={handleDrag}
             >
                 {children}
             </div>
-            <div className={styles.arrowContainer}>
+            {arrow && <div className={`${styles.arrowContainer} ${styles.arrow_right}`}>
                 <button className={styles.arrowRight} onClick={scrollRightHandler}>
-                    RIGHT
+                    {right_arrow_v1}
                 </button>
-            </div>
-        </div>
+            </div>}
+        </div >
     );
 };
 
